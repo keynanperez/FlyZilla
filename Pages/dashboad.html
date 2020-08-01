@@ -1,0 +1,481 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+   
+
+ 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+
+ 
+    <!-- Table -->
+    <link href="../assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/images/favicon.ico" rel="icon" type="image/ico" />
+</head>
+
+<body>
+
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################       Nav Bar ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <header id="header">
+        <div class="container-fluid">
+
+            <div class="logo float-left">
+                <h1 class="text-light"><a href="index.html"><span>Siimple</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <button type="button" class="nav-toggle"><i class="bx bx-menu"></i></button>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="active"><a href="#header">Home</a></li>
+                    <li><a href="#about"> Flights Deals</a></li>
+                    <li><a href="#contact"> Users Booking</a></li>
+                    <li><a href="index.html">Log-Out</a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header><!-- End #header -->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################  Admin Login  ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <section id="hero">
+        <div class="hero-container">
+            <h1>Hi,Admin!</h1>
+            <h2>Please, fill out the for below to be notified for the latest updates!</h2>
+
+            <form action="forms/notify.php" method="post" role="form" class="php-email-form">
+                <div class="row no-gutters">
+                    <div class="col-md-6 form-group pr-md-1">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" value="admin" />
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-md-6 form-group pl-md-1">
+                        <input type="password" class="form-control" name="Password" id="pass" placeholder="Your Password" data-rule="minlen:4" data-msg="Please enter a valid password" value="admin" />
+                        <div class="validate"></div>
+                    </div>
+                </div>
+                <div class="text-center"><button type="submit" id="adminlog">Login</button></div>
+            </form>
+        </div>
+    </section><!-- #hero -->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################     Discounts ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+
+    <main id="main">
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" id="DiscountsTable">
+
+                <div class="section-title">
+                    <h2>Flights Discount Managmant</h2>
+                </div>
+                <div class="text-center"><button class="btn btn-primary" type="submit" id="AddDis">Add New Discount</button></div>
+                <span><br /></span>
+                <div class="row">
+                    <!-- Content -->
+                    <div class="col-12">
+                        <!--<div class='panel panel-default grid'>-->
+                        <div class="table-responsive">
+                            <table class="table" id="disTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Airline Company</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Discount Percentage</th>
+                                        <th>Start Date </th>
+                                        <th>Ends Date</th>
+                                        <th>
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="disTableone">
+                                </tbody>
+                            </table>
+                            <!--</div>-->
+                        </div>
+                        </div>
+                    </div>
+                <!--###############################################################               ######################################################-->
+                <!--###############################################################               ######################################################-->
+                <!--###############################################################  ADD   Discounts ######################################################-->
+                <!--###############################################################               ######################################################-->
+                <!--###############################################################               ######################################################-->
+                <div class="hero-container">
+
+
+
+                    <form class="php-email-form" id="DisForm">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 form-group pr-md-1">
+                                <input type="text" name="Airline" class="form-control" id="airlineDis" placeholder="Airline Name" />
+                            </div>
+                            <div class="col-md-4 form-group pl-md-1">
+                                <input type="text" class="form-control" name="From" id="fromDis" placeholder="for city" />
+                            </div>
+                            <div class="col-md-4 form-group pl-md-1">
+                                <input type="text" class="form-control" name="To" id="toDis" placeholder="to city" />
+                            </div>
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="col-md-4 form-group pr-md-1">
+                                <input type="date" name="Start at" class="form-control" id="startDis" placeholder="start at " />
+                            </div>
+                            <div class="col-md-4 form-group pl-md-1">
+                                <input type="date" class="form-control" name="Ends at" id="endsDis" placeholder="ends at " />
+                            </div>
+                            <div class="col-md-4 form-group pl-md-1">
+                                <input type="text" class="form-control" name="Discount" id="disDis" placeholder="Discount Percents " />
+                            </div>
+                        </div>
+
+                        <div class="text-center"><button class="btn btn-success" type="submit" id="PostDis">Post Discount</button></div>
+                    </form>
+
+                    <!--###############################################################               ######################################################-->
+                    <!--###############################################################               ######################################################-->
+                    <!--############################################################### Edit    Discounts ######################################################-->
+                    <!--###############################################################               ######################################################-->
+                    <!--###############################################################               ######################################################-->
+                    <form class="php-email-form" id="DisFormEdit">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 form-group pr-md-1">
+                                <input type="text" name="Airline" class="form-control" id="airlineDisE" placeholder="Airline Name" />
+                            </div>
+                            <div class="col-md-4 form-group pl-md-1">
+                                <input type="text" class="form-control" name="From" id="fromDisE" placeholder="for city" />
+                            </div>
+                            <div class="col-md-4 form-group pl-md-1">
+                                <input type="text" class="form-control" name="To" id="toDisE" placeholder="to city" />
+                            </div>
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="col-md-4 form-group pr-md-1">
+                                <input type="date" name="Start at" class="form-control" id="startDisE" placeholder="start at " />
+                            </div>
+                            <div class="col-md-4 form-group pl-md-1">
+                                <input type="date" class="form-control" name="Ends at" id="endsDisE" placeholder="ends at " />
+                            </div>
+                            <div class="col-md-4 form-group pl-md-1">
+                                <input type="text" class="form-control" name="Discount" id="disDisE" placeholder="Discount Percents " />
+                            </div>
+                        </div>
+
+                        <div class="text-center"><button class="btn btn-success" type="submit" id="PutDis">Update Discount</button></div>
+                    </form>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+        <!--###############################################################               ######################################################-->
+        <!--###############################################################               ######################################################-->
+        <!--###############################################################  Booked Users ######################################################-->
+        <!--###############################################################               ######################################################-->
+        <!--###############################################################               ######################################################-->
+        <section id="contact" class="contact section-bg">
+            <div class="container" id="UsersTable">
+
+                <div class="section-title">
+                    <h2>Booked Users</h2>
+                </div>
+                <div class="row">
+                    <!-- Content -->
+                    <div class="col-12">
+                        <!--<div class='panel panel-default grid'>-->
+                        <div class="table-responsive">
+                            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Full Name</th>
+                                        <th>Passangers Name</th>
+                                        <th>Email</th>
+                                        <th>Booking time</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usTableone">
+                                </tbody>
+                            </table>
+                            <!--</div>-->
+                        </div>
+                    </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Flyzilla</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+
+                Designed by KYNE
+            </div>
+        </div>
+    </footer><!-- End #footer -->
+    <!-- Vendor JS Files -->
+
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        var EditNow;
+        $(document).ready(function () {
+
+            document.getElementById("about").style.display = 'none'; //מציג את הטבלה
+            document.getElementById("contact").style.display = 'none'; // מציג את הטבלה
+
+            document.getElementById("DisForm").style.display = 'none'; // טופס הוספת הנחה
+            document.getElementById("DisFormEdit").style.display = 'none'; // טופס עריכת הנחה
+
+            $("#adminlog").click(f1); // כפתור התחברות אדמין
+            $("#AddDis").click(f2); // כפתור פתיחת טופס הוספת הנחה
+            $("#PostDis").click(f3); // כפתור הוספת הנחה לשרת
+            $("#PutDis").click(f4); // כפתור עריכת הנחה לשרת
+
+            return false;
+        });
+        function f1() {
+            LogAdmin();
+            return false;
+        } //ADMIN
+        function f2() {
+            document.getElementById("DisForm").style.display = 'block';
+
+            return false;
+        }
+        function f3() {
+            addDis();
+            return false;
+        } // Post New Discount
+
+        function f4() {
+            PosteditDis(EditNow);
+            return false;
+        }
+
+
+        function LogAdmin() {
+            var str = "admin";
+            if ((($("#name").val()) == str) && (($("#pass").val()) == str)) {
+                swal("Welcome", "", "success");
+                document.getElementById("about").style.display = 'block';
+                document.getElementById("contact").style.display = 'block';
+                ajaxCall("GET", "../api/Manager", "", getCS, getFl);
+                ajaxCall("GET", "../api/User", "", getCSUS, getFlUS);
+                return false;
+
+            }
+            else {
+                swal("The Name or the Password is wrong", "", "error");
+
+            }
+            return false;
+        } //Load The Page after admin logs in
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //############################################################### Discount Table ######################################################
+        //###############################################################     GET       ######################################################
+        //###############################################################               ######################################################
+        function getCS(data) {
+            console.log(data);
+
+            var str = "";
+            for (var i = 0; i < data.length; i++) {
+                str += "<tr class='success'><td>" + data[i].DiscountsId + "</td>"
+                str += "<td>" + data[i].AirlineName + "</td>"
+                str += "<td>" + data[i].FromCity + "</td>"
+                str += "<td>" + data[i].ToCity + "</td>"
+                str += "<td>" + data[i].Discount + "%</td>"
+                str += "<td>" + data[i].StartAt + "</td>"
+                str += "<td>" + data[i].EndAt + "</td>"
+                str += "<td><button class='btn btn-danger' onclick='delDis(" + data[i].DiscountsId + ")'>Delete</button><button class='btn btn-warning' id='Edit' onclick='editDis(" + data[i].DiscountsId + ")'>Edit</button></td></tr>"
+
+                //str += "<td class='action'></td></tr>"
+            }
+            document.getElementById("disTableone").innerHTML = str;
+            $('#usTable').DataTable();
+        } // מציג את הטבלה אחרי טעינת ההנחות מהשרת
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //############################################################### Post Discount ######################################################
+        //###############################################################      Post     ######################################################
+        //###############################################################               ######################################################
+        function addDis() {
+            var start = dateconvert($("#startDis").val());
+            var ends = dateconvert($("#endsDis").val());
+            var dep = $("#fromDis").val();
+            var ret = $("#toDis").val();
+            var discount = $("#disDis").val();
+            var airline = $("#airlineDis").val();
+            o = {
+                AirlineName: airline,
+                FromCity: dep,
+                ToCity: ret,
+                StartAt: start,
+                EndAt: ends,
+                Discount: discount
+            }
+
+            ajaxCall("POST", "../api/Manager", JSON.stringify(o), postDisSuccessCB, postDiserrorCB)
+        }  //Post New Discount
+
+        function postDisSuccessCB() {
+            //alert("post Dis");
+            document.getElementById("DisForm").style.display = 'none';
+            ajaxCall("GET", "../api/Manager", "", getCS, getFl);
+
+        }
+        function postDiserrorCB(err) {
+            alert(err);
+        }
+
+        function errFunc(err) {
+            alert(err);
+        }
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //############################################################### DEL Discount ######################################################
+        //###############################################################      DELETE   ######################################################
+        //###############################################################               ######################################################
+        function delDis(disId) {
+            id = JSON.stringify(disId);
+            JSON.stringify(disId)
+            ajaxCall("DELETE", "../api/Manager", id, RMgetCS, RMgetFl);
+
+        } //מחיקת שדה הנחה
+        function RMgetCS() {
+            //alert("removed");
+
+            ajaxCall("GET", "../api/Manager", "", getCS, getFl);
+        }
+        function RMgetFl(err) {
+            alert(err);
+        }
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //############################################################### EDIT Discount ######################################################
+        //###############################################################      EDIT     ######################################################
+        //###############################################################               ######################################################
+        function editDis(disId) {
+            EditNow = disId;
+            document.getElementById("DisFormEdit").style.display = 'block';
+
+        }
+
+        function PosteditDis(disId) {
+            var start = dateconvert($("#startDisE").val());
+            var ends = dateconvert($("#endsDisE").val());
+            var dep = $("#fromDisE").val();
+            var ret = $("#toDisE").val();
+            var discount = $("#disDisE").val();
+            var airline = $("#airlineDisE").val();
+            o = {
+                DiscountsId: disId,
+                AirlineName: airline,
+                FromCity: dep,
+                ToCity: ret,
+                StartAt: start,
+                EndAt: ends,
+                Discount: discount
+            }
+
+
+            ajaxCall("PUT", "../api/Manager", JSON.stringify(o), putCS, getFl);
+        }
+
+        function putCS() {
+            //alert("put sc");
+            document.getElementById("DisFormEdit").style.display = 'none';
+            ajaxCall("GET", "../api/Manager", "", getCS, getFl);
+        }
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //###############################################################  ToolKits     ######################################################
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        function dateconvert(dt) {
+            department = dt[8] + dt[9] + "/" + dt[5] + dt[6] + "/" + dt[0] + dt[1] + dt[2] + dt[3];
+            return department;
+        }
+        function timeConverter(UNIX_timestamp) {
+            var a = new Date(UNIX_timestamp * 1000);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec + "0";
+            return time;
+        }
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //###############################################################     USERS     ######################################################
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        function getFl(err) {
+            alert(err);
+
+        }
+        function getCSUS(data) {
+            console.log(data);
+
+            var str = "";
+            for (var i = 0; i < data.length; i++) {
+                str += "<tr class='success'><td>" + i + "</td>"
+                str += "<td>" + data[i].MainName + "</td>"
+                str += "<td>" + data[i].PassengersNames + "</td>"
+                str += "<td>" + data[i].Email + "</td>"
+                str += "<td>" + data[i].BookingTime + "</td>"
+                str += "<td>" + data[i].TakeoffAirport + "</td>"
+                str += "<td>" + data[i].LandingAirport + "</td></tr>"
+            }
+            document.getElementById("usTableone").innerHTML = str;
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+            //$('#usTable').DataTable();
+
+        }
+        function getFlUS(err) {
+            alert(err);
+        }
+    </script>
+</body>
+</html>

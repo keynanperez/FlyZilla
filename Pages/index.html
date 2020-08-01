@@ -1,0 +1,666 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  
+    <!-- Favicons -->
+    <link href="../assets/img/favicon.png" rel="icon">
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+   
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+
+ 
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Table -->
+    <link href="../assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/images/favicon.ico" rel="icon" type="image/ico" />
+    <!--<script src="../Scripts/auto.js"></script>-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <!--<script src="../Scripts/jquery-3.4.1.min.js"></script>-->
+</head>
+
+<body>
+
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################    NavBar     ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <header id="header">
+        <div class="container-fluid">
+
+            <div class="logo float-left">
+                <h1 class="text-light"><a href="index.html"><span>FlyZilla</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <button type="button" class="nav-toggle"><i class="bx bx-menu"></i></button>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="active"><a href="#header">Home</a></li>
+                    <li><a href="#about"> Search Resoults</a></li>
+                    <li><a href="#contact">Booking Form</a></li>
+                    <li><a href="myfav.html">My Favorite Flights</a></li>
+                    <li><a href="dashboad.html">Admin Access</a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header><!-- End #header -->
+    <!--###############################################################              ######################################################-->
+    <!--###############################################################              ######################################################-->
+    <!--###############################################################Search Flight ######################################################-->
+    <!--###############################################################              ######################################################-->
+    <!--###############################################################              ######################################################-->
+    <section id="hero">
+        <div class="hero-container">
+            <h1>Where to next?</h1>
+            <h2>We compare cheap flights, hotels and car hire from more providers than anyone else. Find great deals with Flyzilla & book your next trip today.</h2>
+
+            <form action="" class="php-email-form" id="Search">
+                <div class="row no-gutters">
+                    <div class="col-md-6 form-group pr-md-1">
+                        <div class="ui-widget">
+                            <input type="text" name="name" class="form-control" id="from" placeholder="from" value="Amsterdam Airport Schiphol" />
+                            <div class="validate"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group pl-md-1">
+                        <input type="text" class="form-control" name="email" id="to" placeholder="to" value="Ben Gurion" />
+                        <div class="validate"></div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-md-6 form-group pr-md-1">
+                        <input type="date" name="name" class="form-control" id="dep" placeholder="Starts" />
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-md-6 form-group pl-md-1">
+                        <input type="date" class="form-control" name="email" id="ret" placeholder="Ends" />
+                        <div class="validate"></div>
+                    </div>
+                </div>
+
+                <div class="text-center"><button type="submit" id="Searching">Search Flight</button></div>
+                <div class="text-center">
+                    <button type="button" id="LoadAirports">Load AirPorts</button>
+                </div>
+
+                <div class="text-center"> <button type="button" id="LoadAirlines">Load Airlines</button></div>
+            </form>
+        </div>
+    </section><!-- #hero -->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################Serach Results ######################################################-->
+    <!--###############################################################               ######################################################-->
+    <!--###############################################################               ######################################################-->
+
+    <main id="main">
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" id="FlightResults">
+
+                <div class="row">
+                    <!-- Content -->
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+
+
+
+                            <table class="table" id="ph">
+                            </table>
+                        </div>
+                </div>
+            </div>
+                </div>
+        </section><!-- End About Section -->
+        <!--###############################################################               ######################################################-->
+        <!--###############################################################               ######################################################-->
+        <!--###############################################################Personal Data  ######################################################-->
+        <!--###############################################################               ######################################################-->
+        <!--###############################################################               ######################################################-->
+        <section id="contact" class="contact section-bg">
+            <div class="container" >
+
+                <div class="section-title">
+                    <h2>Personal Data Form</h2>
+                </div>
+
+                <div class="row justify-content-center">
+
+                 
+
+                    <div class="col-lg-10 col-md-10">
+                        <form class="php-email-form">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" id="Uname" placeholder="Your Name" data-rule="minlen:2" data-msg="Please enter at least 2 chars" />
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" id="Uemail" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="subject" id="UXname" placeholder="Who Flys with you?"  />
+                                <div class="validate"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="form-label">Do you Accept?</span>
+                                <input class="form-control" id="Uaccept" type="checkbox" required placeholder="Enter  ">
+                            </div>
+                            <!--<div class="mb-3">
+                              <div class="loading">Loading</div>
+                              <div class="error-message"></div>
+                              <div class="sent-message">Your message has been sent. Thank you!</div>
+                            </div>-->
+                            <button class="btn btn-danger" id="Postfly">Post Flight</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Contact Us Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Flyzilla</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+              
+                Designed by KYNE
+            </div>
+        </div>
+    </footer><!-- End #footer -->
+    <!-- Vendor JS Files -->
+    <!--<script src="assets/vendor/jquery/jquery.min.js"></script>-->
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <!-- Template Main JS File -->
+    <script src="../assets/js/main.js"></script>
+
+    <script>
+        //Variables
+        availableAirports = [];
+        availableAirlines = [];
+        discountList = [];
+        airportsNames = [];
+        airportsNamesAndId = [];
+        var routes = [];
+        var flightId = "";
+        var ChoosenFlight;
+        serialSearch = 0;
+        var index = 0;
+        var j = 0;
+        var ALflag = 0;
+        var Apflag = 0;
+        //Ready Function
+        $(document).ready(function () {
+            document.getElementById("contact").style.display = 'none';
+            document.getElementById("about").style.display = 'none';
+            $("#LoadAirports").click(f1);
+            $("#LoadAirlines").click(f2);
+            $("#Postfly").click(f3);
+            $("#Search").submit(searchFlights);
+        });
+        function f1() {
+            getAirportsList();
+            return false;
+        }
+        function f2() {
+            getAirlinesList();
+            return false;
+        }
+        function f3() {
+            searchFlights();
+            adduserflight(ChoosenFlight);
+            return false;
+        }
+
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //###############################################################  Load Airports######################################################
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        function getAirportsList() {
+            ajaxCall("GET", "../api/Airport", "", function (data) {
+                if ((data == null)) {
+                    url =
+                        "https://api.skypicker.com/locations?type=dump&locale=en-US&location_types=airport&limit=4000&active_only=true&sort=name";
+                    $.get(url).done(successAirport);
+                    $.get(url).fail(errorCB);
+
+                } else {
+                    url =
+                        "https://api.skypicker.com/locations?type=dump&locale=en-US&location_types=airport&limit=4000&active_only=true&sort=name";
+                    $.get(url).done(successAirportList);
+                    $.get(url).fail(errorCB);
+                    Apflag = 1;
+                    swal("All Airport has been loaded!", "", "success");
+                }
+            }, errMyFlights);
+        }
+        function successAirport(Airportdata) {
+            console.log(Airportdata);
+            for (var i = 0; i < Airportdata.locations.length; i++) {
+                airportsNames[i] = Airportdata.locations[i].name;
+                let aid = Airportdata.locations[i].id;
+                let aname = Airportdata.locations[i].name;
+                a = {
+                    AirportId: aid,
+                    AirportName: aname,
+                }
+                airportsNamesAndId.push(a);
+            }
+            for (var i = 0; i < Airportdata.locations.length; i++) {
+                let airportid = Airportdata.locations[i].id;
+                let airportname = Airportdata.locations[i].name;
+                let longitude = Airportdata.locations[i].location.lon;
+                let latitude = Airportdata.locations[i].location.lat;
+                let airportcity = Airportdata.locations[i].city.name;
+                let airportcountry = Airportdata.locations[i].city.country.name;
+                o = {
+                    AirportId: airportid,
+                    AirportName: airportname,
+                    Longitude: longitude,
+                    Latitude: latitude,
+                    AirportCity: airportcity,
+                    AirportCountry: airportcountry
+                }
+                availableAirports.push(o);
+                Apflag = 1;
+                swal("All Airport has been loaded!", "", "success");
+            }
+            $("#from").autocomplete({
+                source: airportsNames
+            });
+            $("#to").autocomplete({
+                source: airportsNames
+            });
+            console.log(airportsNames);
+            //autocomplete(document.getElementById("from"), airportsNames);
+            //autocomplete(document.getElementById("to"), airportsNames);
+            $('#LoadAirports').prop('disabled', true);
+            ajaxCall("POST", "../api/Airport", JSON.stringify(availableAirports), postAPSuccessCB, postAPerrorCB)
+        }
+        function successAirportList(Adata) {
+            for (var i = 0; i < Adata.locations.length; i++) {
+                airportsNames[i] = Adata.locations[i].name;
+                let aid = Adata.locations[i].id;
+                let aname = Adata.locations[i].name;
+                a = {
+                    AirportId: aid,
+                    AirportName: aname,
+                }
+                airportsNamesAndId.push(a);
+            }
+            $("#from").autocomplete({
+                source: airportsNames
+            });
+            $("#to").autocomplete({
+                source: airportsNames
+            });
+            console.log(airportsNames);
+            //autocomplete(document.getElementById("from"), airportsNames);
+            //autocomplete(document.getElementById("to"), airportsNames);
+            $('#LoadAirports').prop('disabled', true);
+        }
+        function errorCB(err) {
+            alert(err);
+        }
+        function errMyFlights(err) {
+            console.log(err);
+        }
+        function postAPSuccessCB(data) {
+            console.log(data);
+        }
+        function postAPerrorCB(err) {
+            alert(err);
+        }
+
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //###############################################################  Load Airlines######################################################
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        function getAirlinesList() {
+            ajaxCall("GET", "../api/Airline", "", function (data) {
+                if ((data == null)) {
+                    url = "https://api.skypicker.com/airlines?type=airline";
+                    $.get(url).done(successAirline);
+                    $.get(url).fail(errorCB);
+                } else {
+                    ALflag = 1;
+                    swal("All Airlines has been loaded!", "", "success");
+                }
+            }, errMyFlights);
+        }
+        function successAirline(Airlinedata) {
+            for (var i = 0; i < Airlinedata.length; i++) {
+                if ((Airlinedata[i]['type'] == "airline")) {
+                    let airlineid = Airlinedata[i].id;
+                    let airlinename = Airlinedata[i].name;
+                    o = {
+                        Airlineid: airlineid,
+                        Airlinename: airlinename
+                    }
+                    availableAirlines.push(o);
+                }
+            }
+            ajaxCall("POST", "../api/Airline", JSON.stringify(availableAirlines), postALSuccessCB, postALerrorCB)
+            console.log(availableAirports);
+        }
+        function postALSuccessCB(data) {
+            console.log(data);
+            ALflag = 1;
+            swal("All Airlines has been loaded!", "", "success");
+            //$('#LoadAirlines').prop('disabled', true);
+        }
+        function postALerrorCB(err) {
+            alert(err);
+        }
+
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //############################################################### Post Flights  ######################################################
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //
+
+        function addflight(inx) {
+            //document.getElementById("ph").style.display = 'none';
+            document.getElementById("contact").style.display = 'block';
+            ChoosenFlight = inx;
+
+        }
+        function addFavflight(inx) {
+            //להוסיף את הטיסה ללוקאל סטורג
+          
+
+        }
+
+        //Post flight after click AddFlight
+        function adduserflight(inx) {
+            console.log(fData);
+            let path = fData[inx].id;
+            flightId = path;
+            //routes = fData[inx].route;
+            let cityfrom = fData[inx].flyFrom;
+            let cityto = fData[inx].flyTo;
+            let flightairline = fData[inx].airlines[0];
+            let price = fData[inx].price;
+            let flighttime = fData[inx].fly_duration;
+            let dtime = timeConverter(fData[inx].dTime);
+            let atime = timeConverter(fData[inx].aTime);           
+            let name = $("#Uname").val();
+            let psnames = $("#UXname").val();
+            let email = $("#Uemail").val();
+            var d = new Date();
+
+            o = {
+                FlightPath: path,
+                TakeoffAirport: cityfrom,
+                LandingAirport: cityto,
+                FlightAirline: flightairline,
+                TakeoffTime: dtime,
+                LandingTime: atime,
+                FlightDuration: flighttime,
+                Price: price
+                
+            }
+
+            u = {
+                MainName: name,
+                PassengersNames: psnames,
+                Email: email,
+                BookingTime: d,
+                TakeoffAirport: fData[inx].flyFrom,
+                LandingAirport: fData[inx].flyTo,
+
+            }
+            //document.getElementById(path).style.display = 'none';
+            ajaxCall("POST", "../api/User", JSON.stringify(u), userpostflightSC, userpostErrorCB);
+
+        }
+        //Postflight SC & FL
+        function postflightSC() {
+            swal(" Flight has been saved!", "", "success");
+            document.getElementById("contact").style.display = 'none';
+            //postLegs(routes, flightId);
+        }
+        function postErrorCB(err) {
+            alert(err);
+        }
+        function userpostflightSC() {
+            swal(" user has been saved!", "", "success");
+            ajaxCall("POST", "../api/Flight", JSON.stringify(o), postflightSC, postErrorCB);
+            return;
+
+        }
+        function userpostErrorCB(err) {
+            alert(err);
+        }
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //###############################################################Search Flights ######################################################
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //
+        function searchFlights() {
+            
+            let fromname = $("#from").val();
+            var from = nametoid(fromname);
+            let toname = $("#to").val();
+            var to = nametoid(toname);
+            var dep = dateconvert($("#dep").val());
+            var ret = dateconvert($("#ret").val());
+            ajaxCall("GET", "../api/Manager", "", getDisCS, getFl);
+
+            function getDisCS(data) {
+                console.log(data);
+                //discountList = null;
+                var d = 0;
+                for (var i = 0; i < data.length; i++) {
+                    if ((data[i].FromCity == from) && (data[i].ToCity == to)) {
+                        if ((checkdateStart(data[i].StartAt, dep) == 1) && (checkdateEnd(data[i].EndAt, ret) == 1)) {
+                            discountList[d] = data[i];
+                            d++;
+                        }
+
+                    }
+                }
+                //alert(discountList[0].StartAt);
+            }
+            function getFl(err) {
+                alert(err);
+            }
+           
+            if (ALflag == 0) {
+                swal("You have to load the airlines first", "", "error");
+                return false;
+            }
+            if (Apflag == 0) {
+                swal("You have to load the airports first", "", "error");
+                return false;
+            }
+            ajaxCall("GET", "https://api.skypicker.com/flights?flyFrom=" + from + "&to=" + to + "&dateFrom=" + dep +
+                "&dateTo=" + ret + "&partner=picky", "", successSearch, errorSearch);
+            return false;
+        }
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //############################################################### Flights Table ######################################################
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //
+        function successSearch(Data) {
+
+            str = "";
+            fData = Data.data;
+            console.log(fData);
+            index = 0;
+            
+            str += "<thead><tr><th scope='col'>#</th><th scope='col'>From</th><th scope='col'>To</th><th scope='col'>Price</th><th scope='col'>Stops</th><th scope='col'>Duration</th><th scope='col'>Airline</th><th scope='col'>Add To Fav</th><th scope='col'>Add Flight</th></tr></thead><tbody>"
+           for (var i = 0; i < fData.length; i++) {
+               if (((fData[i].airlines).length) < 2) {
+                   var priceString = DiscountChecking(fData[i].price, fData[i].airlines[0]);
+                   if (priceString == undefined) {
+                       priceString = fData[i].price;
+                   }
+                  
+                   
+                   str += "<tr id ='" + fData[i].id + "'>"
+                    str += "<td>" + i + "</td>"
+                    str += "<td>" + fData[i].cityFrom + " - " + timeConverter(fData[i].dTime) + "</td>"
+                    str += "<td>" + fData[i].cityTo + " - " + timeConverter(fData[i].aTime) + "</td>"                   
+                   str += "<td>" + priceString + "</td>"
+                    str += "<td> No Stops </td>"
+                    str += "<td>" + fData[i].fly_duration + "</td>"
+                   str += "<td>" + fData[i].airlines[0] + "</td>"
+                   str += "<td><button class='btn btn-danger' onclick='addFavflight(" + index + ")'>Add To Fav</button></td>"
+
+                   str += "<td><button class='btn btn-danger' onclick='addflight(" + index + ")' id='" + index +
+                       "'>Save</button></td></tr>"
+
+                    index++;
+                }
+            }
+            str += "</tbody>";
+            document.getElementById("ph").innerHTML = str;
+            document.getElementById("about").style.display = 'block';
+            return false;
+        }
+        function errorSearch(err) {
+            alert(err);
+        }
+
+
+
+
+        function DiscountChecking(price, airline) {
+            for (var i = 0; i < discountList.length; i++) {
+                if (discountList[i].AirlineName == airline) {
+                    var finalprice = (((discountList[i].Discount) * price) / 100)
+
+                    return "Discount Alert! Pay Just: " + finalprice + "EUR ,Original Price Was: " + price +"EUR";
+                }
+                else { return price;}
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //###############################################################  ToolKits     ######################################################
+        //###############################################################               ######################################################
+        //###############################################################               ######################################################
+        //Useful function to convert and more
+        function nametoid(name) {
+            for (var i = 0; i < airportsNames.length; i++) {
+                if (airportsNamesAndId[i].AirportName == name) {
+                    return airportsNamesAndId[i].AirportId;
+                }
+            }
+            swal("this airport does not exiest!", "", "error");
+            return false;
+        }
+        function dateconvert(dt) {
+            department = dt[8] + dt[9] + "/" + dt[5] + dt[6] + "/" + dt[0] + dt[1] + dt[2] + dt[3];
+            return department;
+        }
+        function timeConverter(UNIX_timestamp) {
+            var a = new Date(UNIX_timestamp * 1000);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec + "0";
+            return time;
+        }
+        function checkdateStart(a, b) {
+            //console.log(a);
+            //console.log(b);
+            var yearDis = "" + a[6] + "" + a[7] + "" + a[8] + "" + a[9] + "";
+            var yearBook = "" + b[6] + "" + b[7] + "" + b[8] + "" + b[9] + "";
+            var dayA = "" + a[0] + "" + a[1] + "";
+            var dayB = "" + b[0] + "" + b[1] + "";
+            var monthA = "" + a[3] + "" + a[4] + "";
+            var monthB = "" + b[3] + "" + b[4] + "";
+            if (yearDis > yearBook) {
+                return 0;
+
+            }
+            if (monthA > monthB) {
+                return 0;
+            }
+            if (dayA > dayB) {
+                return 0;
+            }
+            return 1;
+        }
+        function checkdateEnd(a, b) {
+            //console.log(a);
+            //console.log(b);
+            var yearDis = "" + a[6] + "" + a[7] + "" + a[8] + "" + a[9] + "";
+            var yearBook = "" + b[6] + "" + b[7] + "" + b[8] + "" + b[9] + "";
+            var dayA = "" + a[0] + "" + a[1] + "";
+            var dayB = "" + b[0] + "" + b[1] + "";
+            var monthA = "" + a[3] + "" + a[4] + "";
+            var monthB = "" + b[3] + "" + b[4] + "";
+            if (yearDis < yearBook) {
+                return 0;
+
+            }
+            if (monthA < monthB) {
+                return 0;
+            }
+            if (dayA < dayB) {
+                return 0;
+            }
+            return 1;
+        }
+            
+    </script>
+</body>
+</html>
